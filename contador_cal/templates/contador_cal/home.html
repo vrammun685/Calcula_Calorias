@@ -1,21 +1,46 @@
-{% extends 'contador_cal/base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+    {% load static %}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{% static 'js/home.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <header class="bg-primary text-white text-center py-3">
+        <h1>Calculadora de Calorías</h1>
+    </header>
+    <main class="container mt-4">
 
-{% block cuerpo %}
-<div class="container mt-4">
     <h3 class="text-primary">Bienvenido {{ usuario }}</h3>
 
-    <div class="card p-3 mt-3">
-        <p><strong>Calorías a Consumir:</strong> {{ calorias_a_consumir }}</p>
-        <p><strong>Calorías Consumidas:</strong> {{ calorias_consumidas }}</p>
-        <p><strong>Calorías Restantes:</strong> {{ calorias_restantes }}</p>
-    </div>
+    <div id = 'ruleta'>
+        <canvas id="caloriasCanva"
+                data-consumidas="{{ calorias_consumidas }}"
+                data-restantes="{{ calorias_restantes }}"
+                data-total="{{ calorias_a_consumir }}">
+        </canvas>
 
+        <div id="chartCenterText">
+            <p>{{ calorias_consumidas }}kcal/<br>{{calorias_a_consumir}}kcal</p>
+        </div>
+    </div>
     <div class="mt-4">
         <a href="{% url 'editar_ficha_usuario' usuario.pk %}" class="btn btn-warning mb-2">Editar Usuario</a><br>
         <a href="{% url 'listar_alimento' %}" class="btn btn-info mb-2">Listar Alimentos</a><br>
         <a href="{% url 'pesos' %}" class="btn btn-secondary mb-2">Pesos</a><br>
         <a href="{% url 'cerrar' %}" class="btn btn-danger">Cerrar Sesión</a><br>
     </div>
-</div>
-{% endblock %}
+</main>
+<footer class="bg-light text-center py-3 mt-4">
+    <p>Aplicación para que la gente consiga cambiar su cuerpo y poco a poco su físico</p>
+</footer>
+</body>
+</html>
+
 

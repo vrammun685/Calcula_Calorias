@@ -67,10 +67,10 @@ class Home(LoginRequiredMixin, TemplateView):
 
             else:
                 calorias_consumidas= diario_existente.calorias
-                context['calorias_consumidas']= calorias_consumidas
+                context['calorias_consumidas']= math.ceil(calorias_consumidas)
 
             #Calorias restantes
-            context['calorias_restantes']=math.ceil(calorias) - calorias_consumidas
+            context['calorias_restantes'] = calorias - calorias_consumidas
 
         return context
 
