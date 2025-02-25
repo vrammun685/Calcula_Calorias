@@ -1,0 +1,18 @@
+{% extends 'contador_cal/base.html' %}
+
+{% block cuerpo %}
+<div class="container mt-4">
+    <h2 class="text-primary">Actualizar Peso</h2>
+    
+    <form action="" method="post" class="mt-3">
+        {% csrf_token %}
+        
+        <div class="mb-3">
+            <label for="peso" class="form-label">Introduce tu nuevo peso:</label>
+            <input type="number" name="nuevo_peso" id="nuevo_peso" class="form-control" required>
+        </div>
+        
+        <button type="submit" class="btn btn-primary">Aceptar</button>
+    </form>
+</div>
+{% endblock %}

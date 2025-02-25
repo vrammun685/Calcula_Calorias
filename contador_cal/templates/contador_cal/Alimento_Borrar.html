@@ -1,0 +1,16 @@
+{% extends 'contador_cal/base.html' %}
+
+{% block cuerpo %}
+<div class="container mt-4">
+    <h4>Borrar Alimento</h4>
+    <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        
+        <div class="mb-3">
+            {{ form.as_p }}
+        </div>
+
+        <button type="submit" class="btn btn-danger w-100">Borrar</button>
+    </form>
+</div>
+{% endblock %}

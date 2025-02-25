@@ -1,0 +1,46 @@
+{% extends 'contador_cal/base.html' %}
+
+{% block cuerpo %}
+<div class="container mt-4">
+    <h2 class="text-primary">Lista de Pesos</h2>
+    
+    <ul class="list-group mb-3">
+        {% for peso in page_obj %}
+            <li class="list-group-item">{{ peso }}</li>
+        {% endfor %}
+    </ul>
+    
+    <!-- Paginación con Bootstrap -->
+    <nav>
+        <ul class="pagination">
+            {% if page_obj.has_previous %}
+                <li class="page-item">
+                    <a class="page-link" href="?page=1">&laquo; Primero</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ page_obj.previous_page_number }}">Anterior</a>
+                </li>
+            {% endif %}
+
+            <li class="page-item disabled">
+                <span class="page-link">Página {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}</span>
+            </li>
+
+            {% if page_obj.has_next %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ page_obj.next_page_number }}">Siguiente</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">Última &raquo;</a>
+                </li>
+            {% endif %}
+        </ul>
+    </nav>
+    
+    <!-- Botones de acción -->
+    <div class="mt-3">
+        <a href="{% url 'guardar_peso' %}" class="btn btn-success">Generar Peso</a>
+        <a href="{% url 'cerrar' %}" class="btn btn-danger">Cerrar Sesión</a>
+    </div>
+</div>
+{% endblock %}

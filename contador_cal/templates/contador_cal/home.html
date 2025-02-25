@@ -1,0 +1,21 @@
+{% extends 'contador_cal/base.html' %}
+
+{% block cuerpo %}
+<div class="container mt-4">
+    <h3 class="text-primary">Bienvenido {{ usuario }}</h3>
+
+    <div class="card p-3 mt-3">
+        <p><strong>Calorías a Consumir:</strong> {{ calorias_a_consumir }}</p>
+        <p><strong>Calorías Consumidas:</strong> {{ calorias_consumidas }}</p>
+        <p><strong>Calorías Restantes:</strong> {{ calorias_restantes }}</p>
+    </div>
+
+    <div class="mt-4">
+        <a href="{% url 'editar_ficha_usuario' usuario.pk %}" class="btn btn-warning mb-2">Editar Usuario</a><br>
+        <a href="{% url 'listar_alimento' %}" class="btn btn-info mb-2">Listar Alimentos</a><br>
+        <a href="{% url 'pesos' %}" class="btn btn-secondary mb-2">Pesos</a><br>
+        <a href="{% url 'cerrar' %}" class="btn btn-danger">Cerrar Sesión</a><br>
+    </div>
+</div>
+{% endblock %}
+

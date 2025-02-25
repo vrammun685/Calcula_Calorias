@@ -1,0 +1,17 @@
+{% extends 'contador_cal/base.html' %}
+
+{% block cuerpo %}
+<div class="container mt-4">
+    <h2 class="text-primary">Actualizar Información</h2>
+    <form action="" method="post" class="mt-3">
+        {% csrf_token %}
+        <div class="mb-3">
+            {{ form.as_p }}
+        </div>
+        <button type="submit" class="btn btn-primary">Aceptar</button>
+    </form>
+    <div class="mt-3">
+        <a href="{% url 'editar_perfil_usuario' usuario.pk %}" class="btn btn-warning">Editar Perfil</a>
+    </div>
+</div>
+{% endblock %}

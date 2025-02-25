@@ -1,0 +1,30 @@
+{% extends 'contador_cal/base.html' %}
+
+{% block cuerpo %}
+{% load static %}
+<div class="container mt-4">
+    <h3>{{ alimento.nombre }}</h3>
+
+    <form action="" method="post">
+        {% csrf_token %}
+
+        <div class="mb-3">
+            {% if alimento.medida == 'Gramos' %}
+                <label for="cantidad" class="form-label">Gramos</label>
+            {% else %}
+                <label for="cantidad" class="form-label">Mililitros</label>
+            {% endif %}
+            <input id="cantidad" type="number" name="cantidad" class="form-control" placeholder="Introduzca la cantidad" data-calorias="{{ alimento.calorias }}">
+        </div>
+
+        <div class="mb-3">
+            <label for="calorias" class="form-label">Calorías</label>
+            <input type="number" name="calorias" id="calorias" class="form-control" value="" readonly>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Aceptar</button>
+    </form>
+</div>
+
+<script src="{% static 'js/prueba1.js' %}"></script>
+{% endblock %}
